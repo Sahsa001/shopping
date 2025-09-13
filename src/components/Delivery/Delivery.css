@@ -1,0 +1,121 @@
+/* ==================== Delivery Page ==================== */
+.delivery-page {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: "Arial", sans-serif;
+}
+
+.delivery-form-container {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+}
+
+.delivery-form-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.delivery-form input,
+.delivery-form textarea,
+.delivery-form select {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.delivery-form input:focus,
+.delivery-form textarea:focus,
+.delivery-form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.address-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.address-row input {
+  flex: 1;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Payment Section */
+.delivery-form h3 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.card-fields,
+.mbank-fields {
+  background: #f1f5f9;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card-fields input,
+.mbank-fields input {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.card-fields input:focus,
+.mbank-fields input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 6px rgba(40, 167, 69, 0.3);
+}
+
+/* Agree Label */
+.agree-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* Submit Button */
+.delivery-form button {
+  background: #007bff;
+  color: #fff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+}
+
+.delivery-form button:hover {
+  background: #0056b3;
+}

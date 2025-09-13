@@ -1,0 +1,214 @@
+.footer {
+    background: #fff;
+    /* ортосу ачык ак */
+    color: #333;
+    font-family: "Arial", sans-serif;
+    padding: 60px 80px 40px;
+    border-top: 1px solid #e0e4e8;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-logo {
+    width: 140px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-links {
+    flex: 2;
+    display: flex;
+    gap: 80px;
+    min-width: 300px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.footer-column a::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #333;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+.footer-column a:hover {
+    color: #007bff;
+}
+
+.footer-column a:hover::after {
+    width: 100%;
+}
+
+.footer-right {
+    flex: 1.5;
+    min-width: 280px;
+}
+
+.footer-news {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.subscribe {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.subscribe input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.subscribe input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.subscribe button {
+    padding: 12px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.subscribe button:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-phone {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.footer-address {
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-bottom {
+    border-top: 1px solid #e0e4e8;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #777;
+}
+
+.footer-policy a {
+    margin-left: 20px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-policy a:hover {
+    color: #007bff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .footer-left,
+    .footer-right,
+    .footer-links {
+        min-width: 100%;
+    }
+
+    .subscribe {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .subscribe button {
+        width: 100%;
+    }
+}

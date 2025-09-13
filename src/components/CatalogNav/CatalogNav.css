@@ -1,0 +1,193 @@
+.catalog-container {
+  padding: 40px;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  gap: 40px; /* sidebar менен main ортосундагы аралык */
+}
+
+.sidebar {
+  width: 270px;
+  position: sticky;
+  top: 100px; /* экранды ылдый сүргөндө stick */
+  align-self: flex-start;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.sidebar h3 {
+  margin-bottom: 12px;
+  color: #004085;
+  font-size: 1.15rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+.sidebar input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.catalog-main {
+  flex: 1;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 35px;
+  justify-items: center;
+  padding-top: 10px;
+}
+
+/* Карточка контейнер */
+.product-card {
+  width: 260px;
+  height: 380px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.product-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  padding: 18px;
+  background: #ffffff; /* Ак фон бардык карточкалар үчүн */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-front {
+  align-items: center;
+}
+
+.product-image {
+  max-width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: transform 0.3s;
+}
+
+.price {
+  font-weight: bold;
+  color: #28a745;
+  margin: 6px 0;
+}
+
+.in-stock {
+  color: green;
+  font-weight: 600;
+}
+
+.out-stock {
+  color: red;
+  font-weight: 600;
+}
+
+.add-to-cart-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #004085;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background: #002752;
+  transform: translateY(-2px);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #ffffff; /* Арткы бет да ак фон */
+  color: #333;
+  text-align: left;
+  padding: 22px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  justify-content: flex-start;
+  border: 1px solid #e0e4e8; /* жеңил чек ара */
+}
+
+.card-back h3 {
+  margin-bottom: 12px;
+  color: #004085;
+  font-size: 1.1rem;
+}
+
+.card-back p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.card-back .price {
+  color: #28a745;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Адаптивдик стили */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .catalog-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 25px;
+    top: 0; /* мобильде stick тууралайбыз */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

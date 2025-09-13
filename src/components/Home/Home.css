@@ -1,0 +1,44 @@
+.home {
+  width: 1413px;
+  height: 100%;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  color: #fff;
+  transition: background-image 1s ease-in-out; 
+}
+
+.hero-content {
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.3); 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.catalog-link {
+  font-size: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #ddd;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
