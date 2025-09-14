@@ -1,34 +1,215 @@
+// Бардык товарлар массиви
 const products = [
-  { id: "1", name: "Смеситель DEMM Classic", price: "1500 руб.", category: "Смесители", brand: "DEMM", image: "https://picsum.photos/200?random=1", inStock: "В наличии", description: "Классический смеситель DEMM" },
-  { id: "2", name: "Смеситель Grohe Modern", price: "2500 руб.", category: "Смесители", brand: "Grohe", image: "https://picsum.photos/200?random=2", inStock: "В наличии", description: "Современный смеситель Grohe" },
-  { id: "3", name: "Смеситель Hansgrohe Elegance", price: "2800 руб.", category: "Смесители", brand: "Hansgrohe", image: "https://picsum.photos/200?random=3", inStock: "В наличии", description: "Элегантный смеситель Hansgrohe" },
-  { id: "4", name: "Душевая система DEMM Rain", price: "4500 руб.", category: "Душевые системы", brand: "DEMM", image: "https://picsum.photos/200?random=4", inStock: "В наличии", description: "Душевая система с тропическим душем" },
-  { id: "5", name: "Душевая система Grohe Smart", price: "5200 руб.", category: "Душевые системы", brand: "Grohe", image: "https://picsum.photos/200?random=5", inStock: "В наличии", description: "Интеллектуальная душевая система" },
-  { id: "6", name: "Душевая система Hansgrohe Luxury", price: "6000 руб.", category: "Душевые системы", brand: "Hansgrohe", image: "https://picsum.photos/200?random=6", inStock: "В наличии", description: "Роскошная душевая система Hansgrohe" },
-  { id: "7", name: "Душевая стойка DEMM", price: "3000 руб.", category: "Душевые стойки", brand: "DEMM", image: "https://picsum.photos/200?random=7", inStock: "В наличии", description: "Стойка для душа DEMM" },
-  { id: "8", name: "Душевая стойка Grohe", price: "3500 руб.", category: "Душевые стойки", brand: "Grohe", image: "https://picsum.photos/200?random=8", inStock: "В наличии", description: "Стойка для душа Grohe" },
-  { id: "9", name: "Душевая стойка Hansgrohe", price: "4000 руб.", category: "Душевые стойки", brand: "Hansgrohe", image: "https://picsum.photos/200?random=9", inStock: "В наличии", description: "Стойка для душа Hansgrohe" },
-  { id: "10", name: "Лейка DEMM", price: "800 руб.", category: "Лейки", brand: "DEMM", image: "https://picsum.photos/200?random=10", inStock: "В наличии", description: "Лейка для душа DEMM" },
-  { id: "11", name: "Лейка Grohe", price: "1000 руб.", category: "Лейки", brand: "Grohe", image: "https://picsum.photos/200?random=11", inStock: "В наличии", description: "Лейка для душа Grohe" },
-  { id: "12", name: "Лейка Hansgrohe", price: "1200 руб.", category: "Лейки", brand: "Hansgrohe", image: "https://picsum.photos/200?random=12", inStock: "В наличии", description: "Лейка для душа Hansgrohe" },
-  { id: "13", name: "Излив DEMM", price: "700 руб.", category: "Изливы", brand: "DEMM", image: "https://picsum.photos/200?random=13", inStock: "В наличии", description: "Излив DEMM" },
-  { id: "14", name: "Излив Grohe", price: "900 руб.", category: "Изливы", brand: "Grohe", image: "https://picsum.photos/200?random=14", inStock: "В наличии", description: "Излив Grohe" },
-  { id: "15", name: "Излив Hansgrohe", price: "1100 руб.", category: "Изливы", brand: "Hansgrohe", image: "https://picsum.photos/200?random=15", inStock: "В наличии", description: "Излив Hansgrohe" },
-  { id: "16", name: "Аксессуар DEMM", price: "500 руб.", category: "Аксессуары", brand: "DEMM", image: "https://picsum.photos/200?random=16", inStock: "В наличии", description: "Аксессуар DEMM" },
-  { id: "17", name: "Аксессуар Grohe", price: "600 руб.", category: "Аксессуары", brand: "Grohe", image: "https://picsum.photos/200?random=17", inStock: "В наличии", description: "Аксессуар Grohe" },
-  { id: "18", name: "Аксессуар Hansgrohe", price: "750 руб.", category: "Аксессуары", brand: "Hansgrohe", image: "https://picsum.photos/200?random=18", inStock: "В наличии", description: "Аксессуар Hansgrohe" },
-  { id: "19", name: "Смеситель DEMM Modern", price: "1600 руб.", category: "Смесители", brand: "DEMM", image: "https://picsum.photos/200?random=19", inStock: "В наличии", description: "Современный смеситель DEMM" },
-  { id: "20", name: "Душевая система DEMM Deluxe", price: "4700 руб.", category: "Душевые системы", brand: "DEMM", image: "https://picsum.photos/200?random=20", inStock: "В наличии", description: "Душевая система Deluxe DEMM" },
-  { id: "21", name: "Душевая стойка DEMM Premium", price: "3300 руб.", category: "Душевые стойки", brand: "DEMM", image: "https://picsum.photos/200?random=21", inStock: "В наличии", description: "Премиум стойка DEMM" },
-  { id: "22", name: "Лейка DEMM Luxury", price: "900 руб.", category: "Лейки", brand: "DEMM", image: "https://picsum.photos/200?random=22", inStock: "В наличии", description: "Лейка DEMM Luxury" },
-  { id: "23", name: "Излив DEMM Modern", price: "800 руб.", category: "Изливы", brand: "DEMM", image: "https://picsum.photos/200?random=23", inStock: "В наличии", description: "Современный излив DEMM" },
-  { id: "24", name: "Аксессуар DEMM Deluxe", price: "650 руб.", category: "Аксессуары", brand: "DEMM", image: "https://picsum.photos/200?random=24", inStock: "В наличии", description: "Аксессуар Deluxe DEMM" },
-  { id: "25", name: "Смеситель Grohe Classic", price: "2600 руб.", category: "Смесители", brand: "Grohe", image: "https://picsum.photos/200?random=25", inStock: "В наличии", description: "Классический смеситель Grohe" },
-  { id: "26", name: "Душевая система Grohe Rain", price: "5300 руб.", category: "Душевые системы", brand: "Grohe", image: "https://picsum.photos/200?random=26", inStock: "В наличии", description: "Душевая система Grohe Rain" },
-  { id: "27", name: "Душевая стойка Grohe Premium", price: "3600 руб.", category: "Душевые стойки", brand: "Grohe", image: "https://picsum.photos/200?random=27", inStock: "В наличии", description: "Премиум стойка Grohe" },
-  { id: "28", name: "Лейка Grohe Luxury", price: "1100 руб.", category: "Лейки", brand: "Grohe", image: "https://picsum.photos/200?random=28", inStock: "В наличии", description: "Лейка Grohe Luxury" },
-  { id: "29", name: "Излив Grohe Modern", price: "950 руб.", category: "Изливы", brand: "Grohe", image: "https://picsum.photos/200?random=29", inStock: "В наличии", description: "Современный излив Grohe" },
-  { id: "30", name: "Аксессуар Grohe Premium", price: "700 руб.", category: "Аксессуары", brand: "Grohe", image: "https://picsum.photos/200?random=30", inStock: "В наличии", description: "Премиум аксессуар Grohe" }
+  // === Смесители ===
+  {
+    id: "1",
+    name: "Смеситель DEMM Classic",
+    price: "1500 руб.",
+    category: "Смесители",
+    brand: "DEMM",
+    image: "https://picsum.photos/200?random=1",
+    inStock: "В наличии",
+    description: "Классический смеситель DEMM для кухни и ванной."
+  },
+  {
+    id: "2",
+    name: "Смеситель Grohe Modern",
+    price: "2500 руб.",
+    category: "Смесители",
+    brand: "Grohe",
+    image: "https://picsum.photos/200?random=2",
+    inStock: "В наличии",
+    description: "Современный смеситель Grohe с хромированным покрытием."
+  },
+  {
+    id: "3",
+    name: "Смеситель Hansgrohe Elegance",
+    price: "2800 руб.",
+    category: "Смесители",
+    brand: "Hansgrohe",
+    image: "https://picsum.photos/200?random=3",
+    inStock: "В наличии",
+    description: "Элегантный смеситель Hansgrohe для ванной комнаты."
+  },
+  {
+    id: "4",
+    name: "Смеситель Vidima Retro",
+    price: "1300 руб.",
+    category: "Смесители",
+    brand: "Vidima",
+    image: "https://picsum.photos/200?random=4",
+    inStock: "Под заказ",
+    description: "Ретро смеситель Vidima с классическим дизайном."
+  },
+  {
+    id: "5",
+    name: "Смеситель Roca Premium",
+    price: "3200 руб.",
+    category: "Смесители",
+    brand: "Roca",
+    image: "https://picsum.photos/200?random=5",
+    inStock: "В наличии",
+    description: "Премиальный смеситель Roca для кухни."
+  },
+  {
+    id: "6",
+    name: "Смеситель AM.PM Spirit",
+    price: "2100 руб.",
+    category: "Смесители",
+    brand: "AM.PM",
+    image: "https://picsum.photos/200?random=6",
+    inStock: "В наличии",
+    description: "Современный смеситель AM.PM Spirit для ванной."
+  },
+
+  // === Душевые системы ===
+  {
+    id: "7",
+    name: "Душевая система Grohe Rain",
+    price: "5400 руб.",
+    category: "Душевые системы",
+    brand: "Grohe",
+    image: "https://picsum.photos/200?random=7",
+    inStock: "В наличии",
+    description: "Система Grohe с тропическим душем."
+  },
+  {
+    id: "8",
+    name: "Душевая система Hansgrohe ShowerSet",
+    price: "6200 руб.",
+    category: "Душевые системы",
+    brand: "Hansgrohe",
+    image: "https://picsum.photos/200?random=8",
+    inStock: "В наличии",
+    description: "Фирменная душевая система Hansgrohe."
+  },
+  {
+    id: "9",
+    name: "Душевая система Roca Hydro",
+    price: "5000 руб.",
+    category: "Душевые системы",
+    brand: "Roca",
+    image: "https://picsum.photos/200?random=9",
+    inStock: "Под заказ",
+    description: "Современная душевая система с режимами."
+  },
+
+  // === Изливы ===
+  {
+    id: "10",
+    name: "Излив DEMM Short",
+    price: "700 руб.",
+    category: "Изливы",
+    brand: "DEMM",
+    image: "https://picsum.photos/200?random=10",
+    inStock: "В наличии",
+    description: "Короткий излив DEMM для ванной."
+  },
+  {
+    id: "11",
+    name: "Излив Grohe Long",
+    price: "1100 руб.",
+    category: "Изливы",
+    brand: "Grohe",
+    image: "https://picsum.photos/200?random=11",
+    inStock: "В наличии",
+    description: "Длинный излив Grohe с покрытием."
+  },
+  {
+    id: "12",
+    name: "Излив Hansgrohe Elegant",
+    price: "900 руб.",
+    category: "Изливы",
+    brand: "Hansgrohe",
+    image: "https://picsum.photos/200?random=12",
+    inStock: "В наличии",
+    description: "Элегантный излив Hansgrohe."
+  },
+
+  // === Полки ===
+  {
+    id: "13",
+    name: "Полка для ванной стеклянная",
+    price: "600 руб.",
+    category: "Полки",
+    brand: "Roca",
+    image: "https://picsum.photos/200?random=13",
+    inStock: "В наличии",
+    description: "Удобная стеклянная полка для ванной комнаты."
+  },
+  {
+    id: "14",
+    name: "Полка угловая металлическая",
+    price: "750 руб.",
+    category: "Полки",
+    brand: "Grohe",
+    image: "https://picsum.photos/200?random=14",
+    inStock: "В наличии",
+    description: "Металлическая угловая полка для душевой."
+  },
+
+  // === Аксессуары ===
+  {
+    id: "15",
+    name: "Держатель для полотенца Grohe",
+    price: "400 руб.",
+    category: "Аксессуары",
+    brand: "Grohe",
+    image: "https://picsum.photos/200?random=15",
+    inStock: "В наличии",
+    description: "Хромированный держатель для полотенца."
+  },
+  {
+    id: "16",
+    name: "Мыльница Hansgrohe",
+    price: "350 руб.",
+    category: "Аксессуары",
+    brand: "Hansgrohe",
+    image: "https://picsum.photos/200?random=16",
+    inStock: "В наличии",
+    description: "Стильная мыльница Hansgrohe."
+  },
+  {
+    id: "17",
+    name: "Крючок для ванной DEMM",
+    price: "200 руб.",
+    category: "Аксессуары",
+    brand: "DEMM",
+    image: "https://picsum.photos/200?random=17",
+    inStock: "В наличии",
+    description: "Надежный крючок для ванной комнаты."
+  },
+  {
+    id: "18",
+    name: "Дозатор для жидкого мыла Roca",
+    price: "500 руб.",
+    category: "Аксессуары",
+    brand: "Roca",
+    image: "https://picsum.photos/200?random=18",
+    inStock: "В наличии",
+    description: "Дозатор для жидкого мыла Roca."
+  },
+  {
+    id: "19",
+    name: "Зеркало настенное AM.PM",
+    price: "1800 руб.",
+    category: "Аксессуары",
+    brand: "AM.PM",
+    image: "https://picsum.photos/200?random=19",
+    inStock: "Под заказ",
+    description: "Круглое зеркало AM.PM с LED подсветкой."
+  },
+  {
+    id: "20",
+    name: "Стакан для зубных щеток Vidima",
+    price: "300 руб.",
+    category: "Аксессуары",
+    brand: "Vidima",
+    image: "https://picsum.photos/200?random=20",
+    inStock: "В наличии",
+    description: "Стеклянный стакан Vidima для зубных щеток."
+  }
 ];
 
+// ✅ Default экспорт
 export default products;

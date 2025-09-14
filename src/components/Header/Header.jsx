@@ -5,44 +5,34 @@ import logo from "../../assets/logo.png";
 import cartLogo from "../../assets/cart-logo.png";
 import promoIcon from "../../assets/promo-icon.png";
 import { useCart } from "../CartContext/CartContext";
+import products from "../../data/products"; // default export
 import "./Header.css";
 
 function Header() {
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { cart } = useCart() || { cart: [] }; // Қауіпсіздік үшін дефолт мән қосылды
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [user, setUser] = useState(null);
   const [accountOpen, setAccountOpen] = useState(false);
-
-  const categories = [
-    { name: "смесители", path: "/mixers" },
-    { name: "душевые системы", path: "/shower-systems" },
-    { name: "душевые стойки", path: "/shower-racks" },
-    { name: "изливы", path: "/spouts" },
-    { name: "аксессуары", path: "/accessories" },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false); // Mobile menu toggle
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  const handleSearch = () => {
-    if (!searchTerm.trim()) return;
-
-    const term = searchTerm.toLowerCase();
-    const category = categories.find((cat) =>
-      term.includes(cat.name.toLowerCase())
-    );
-
-    if (category) {
-      navigate(`${category.path}?search=${encodeURIComponent(searchTerm)}`);
-    } else {
-      // Если категория не найдена, ищем среди всех товаров на Mixers
-      navigate(`/mixers?search=${encodeURIComponent(searchTerm)}`);
+  const handleSearch = (e) => {
+    if ((e.type === "click") || (e.key === "Enter" && e.type === "keydown")) {
+      if (searchTerm.trim() !== "") {
+        const results = products.filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchResults(results);
+      } else {
+        setSearchResults([]);
+      }
     }
-
-    setSearchTerm("");
   };
 
   const handleAccountClick = () => {
@@ -65,36 +55,49 @@ function Header() {
 
   const handleCartClick = () => navigate("/cart");
 
+  const handleNavLinkClick = () => {
+    setMenuOpen(false); // Мобильдік менюні жабу
+    setSearchResults([]); // Іздеу нәтижелерін тазарту
+    setSearchTerm(""); // Іздеу өрісін тазарту
+  };
+
   return (
     <header className="header">
+      {/* HEADER TOP */}
       <div className="header-top">
-        <nav className="header-links">
-          <NavLink to="/about" className="nav-link">О компании</NavLink>
-          <NavLink to="/delivery" className="nav-link">Оплата и доставка</NavLink>
-          <NavLink to="/stores" className="nav-link">Магазины</NavLink>
-          <NavLink to="/contacts" className="nav-link">Контакты</NavLink>
+        <nav className={`header-links ${menuOpen ? "open" : ""}`}>
+          <NavLink to="/about" className="nav-link" onClick={handleNavLinkClick}>О компании</NavLink>
+          <NavLink to="/delivery" className="nav-link" onClick={handleNavLinkClick}>Оплата и доставка</NavLink>
+          <NavLink to="/stores" className="nav-link" onClick={handleNavLinkClick}>Магазины</NavLink>
+          <NavLink to="/contacts" className="nav-link" onClick={handleNavLinkClick}>Контакты</NavLink>
         </nav>
 
         <div className="account-wrapper">
           <button className="account-btn" onClick={handleAccountClick}>
             {user ? `👤 ${user.name}` : "Личный кабинет"}
           </button>
-
           {accountOpen && user && (
             <div className="account-dropdown">
-              <NavLink to="/account" className="dropdown-link">Мой профиль</NavLink>
+              <NavLink to="/account" className="dropdown-link" onClick={handleNavLinkClick}>Мой профиль</NavLink>
               <button onClick={handleLogout} className="dropdown-link logout-btn">Выйти</button>
             </div>
           )}
         </div>
+
+        {/* Mobile Hamburger */}
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
       </div>
 
+      {/* HEADER MAIN */}
       <div className="header-main">
         <div className="logo">
-          <NavLink to="/"><img src={logo} alt="Logo" /></NavLink>
+          <NavLink to="/" onClick={handleNavLinkClick}><img src={logo} alt="Logo" /></NavLink>
         </div>
 
-        {/* Поиск */}
         <div className="search-wrapper">
           <input
             type="text"
@@ -102,11 +105,30 @@ function Header() {
             placeholder="Поиск по сайту..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }}
+            onKeyDown={handleSearch} // Enter басқанда іздеу
           />
           <button className="search-btn" onClick={handleSearch}>
             <img src={poisk} alt="Поиск" />
           </button>
+
+          {searchResults.length > 0 && (
+            <div className="search-results">
+              <ul>
+                {searchResults.map((item) => (
+                  <li key={item.id}>
+                    <NavLink
+                      to={`/${item.category.toLowerCase().replace(/ /g, "-")}`} // Категория URL-ға сәйкес реттелді
+                      onClick={handleNavLinkClick}
+                    >
+                      <img src={item.image} alt={item.name} />
+                      <span className="name">{item.name}</span>
+                      <span className="price">{item.price} ₸</span>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="header-actions">
@@ -125,15 +147,16 @@ function Header() {
         </div>
       </div>
 
-      <nav className="main-nav sticky-nav">
-        <NavLink to="/promotions" className="nav-item active">
+      {/* MAIN NAVIGATION */}
+      <nav className={`main-nav ${menuOpen ? "open" : ""}`}>
+        <NavLink to="/promotions" className="nav-item" onClick={handleNavLinkClick}>
           Акции <img src={promoIcon} alt="Promo" className="nav-icon" />
         </NavLink>
-        <NavLink to="/mixers" className="nav-item">Смесители</NavLink>
-        <NavLink to="/shower-systems" className="nav-item">Душевые системы</NavLink>
-        <NavLink to="/shower-racks" className="nav-item">Душевые стойки</NavLink>
-        <NavLink to="/spouts" className="nav-item">Изливы</NavLink>
-        <NavLink to="/accessories" className="nav-item">Аксессуары</NavLink>
+        <NavLink to="/mixers" className="nav-item" onClick={handleNavLinkClick}>Смесители</NavLink>
+        <NavLink to="/shower-systems" className="nav-item" onClick={handleNavLinkClick}>Душевые системы</NavLink>
+        <NavLink to="/shower-racks" className="nav-item" onClick={handleNavLinkClick}>Душевые стойки</NavLink>
+        <NavLink to="/spouts" className="nav-item" onClick={handleNavLinkClick}>Изливы</NavLink>
+        <NavLink to="/accessories" className="nav-item" onClick={handleNavLinkClick}>Аксессуары</NavLink>
       </nav>
     </header>
   );

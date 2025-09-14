@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaTelegram } from "react-icons/fa";
+import emailjs from "emailjs-com";
 import "./Contact.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,10 +13,26 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const waNumber = "996220087452"; // сенин WhatsApp номериң
-    const waMessage = `Имя: ${form.name}\nEmail: ${form.email}\nСообщение: ${form.message}`;
-    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`, "_blank");
-    setForm({ name: "", email: "", message: "" });
+    setSending(true);
+
+    emailjs
+      .send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        form,
+        "YOUR_PUBLIC_KEY"
+      )
+      .then(
+        () => {
+          alert("Сообщение успешно отправлено!");
+          setForm({ name: "", email: "", message: "" });
+          setSending(false);
+        },
+        (err) => {
+          alert("Ошибка при отправке: " + err.text);
+          setSending(false);
+        }
+      );
   };
 
   return (
@@ -22,6 +40,7 @@ export default function Contact() {
       <h1>Контакты</h1>
       <p>Свяжитесь с нами любым удобным способом:</p>
 
+      {/* --- Карточки --- */}
       <div className="contact-cards">
         <div className="contact-card">
           <FaPhoneAlt className="icon phone" />
@@ -48,23 +67,58 @@ export default function Contact() {
         </div>
       </div>
 
+      {/* --- WhatsApp & Telegram --- */}
       <div className="social-buttons">
-        <a href="https://wa.me/996220087452" className="social-btn whatsapp" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://wa.me/996220087452"
+          className="social-btn whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaWhatsapp /> WhatsApp
         </a>
-        <a href="https://t.me/+996996223432957" className="social-btn telegram" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://t.me/+996996223432957"
+          className="social-btn telegram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaTelegram /> Telegram
         </a>
       </div>
 
+      {/* --- Форма --- */}
       <form className="contact-form" onSubmit={handleSubmit}>
         <h2>Напишите нам</h2>
-        <input type="text" name="name" placeholder="Ваше имя" value={form.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Ваш Email" value={form.email} onChange={handleChange} required />
-        <textarea name="message" placeholder="Ваше сообщение" value={form.message} onChange={handleChange} required></textarea>
-        <button type="submit">Отправить</button>
+        <input
+          type="text"
+          name="name"
+          placeholder="Ваше имя"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Ваш Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Ваше сообщение"
+          value={form.message}
+          onChange={handleChange}
+          required
+        ></textarea>
+        <button type="submit" disabled={sending}>
+          {sending ? "Отправка..." : "Отправить"}
+        </button>
       </form>
 
+      {/* --- Карта --- */}
       <div className="map-container">
         <iframe
           title="map"

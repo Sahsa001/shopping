@@ -13,7 +13,7 @@ import Catalog from "./components/CatalogNav/CatalogNav";
 import Cart from "./components/Cart/Cart";
 import Spouts from "./components/Spouts/Spouts";
 import Accessories from "./components/Accessories/Accessories";
-import SearchResults from "./components/SearchResults/SearchResults";
+
 import Login from "./components/login/Login";
 import Register from "./components/Register/Register";
 import Account from "./components/Account/Account";
@@ -21,6 +21,7 @@ import Account from "./components/Account/Account";
 // Context'тер
 import { CartProvider } from "./components/CartContext/CartContext";
 import { UserProvider } from "./components/UserContext/UserContext";
+import SearchResults from "./components/SearchResults/SearchResults";
 
 // Layout'ту провайдер менен ороп коебуз
 const withProviders = (element) => (
@@ -47,11 +48,10 @@ const router = createBrowserRouter([
       { path: "cart", element: <Cart /> },
       { path: "spouts", element: <Spouts /> },
       { path: "accessories", element: <Accessories /> },
-      { path: "search", element: <SearchResults /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "account", element: <Account /> },
-      
+      {path:"search", element:<SearchResults/>}
     ],
   },
 ]);
