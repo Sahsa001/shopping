@@ -102,7 +102,7 @@ export default function About() {
           </div>
 
           <div className="comments-section">
-            <h2>Отзывы клиентов</h2>
+            <h2>Отзывы клиентов:</h2>
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
