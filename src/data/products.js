@@ -207,7 +207,7 @@ const products = [
     brand: "Vidima",
     image: "https://picsum.photos/200?random=20",
     inStock: "В наличии",
-    description: "Стеклянный стакан Vidima для зубных щеток."
+    description: "Стеклянный стакан Vidima для зубных щеток"
   }
 ];
 
