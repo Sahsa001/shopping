@@ -2,7 +2,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer/Footer";
-import Header from "./header/Header.jsx";
+import Header from "./Headerr/Header.jsx";
 
 function Layout() {
   return (
