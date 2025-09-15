@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 import cartLogo from "../../assets/cart-logo.png";
 import promoIcon from "../../assets/promo-icon.png";
 import { useCart } from "../CartContext/CartContext";
-import products from "../../data/products"; // default export
+
 import "./Header.css";
 
 function Header() {
